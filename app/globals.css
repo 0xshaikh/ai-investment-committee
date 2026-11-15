@@ -67,3 +67,20 @@ body { background: var(--bg); color: var(--text); font-family: ui-sans-serif, sy
   .print-block { color: #111 !important; }
   .print-block .muted { color: #555 !important; }
 }
+
+/* ---- Reference theme: scroll-fill statement + animated trust panel ---- */
+.statement-fill {
+  background-image: linear-gradient(90deg, #52525b var(--fill, 0%), #fafafa var(--fill, 0%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.hero-glow {
+  background: radial-gradient(60% 50% at 50% 30%, rgba(16,185,129,.14), transparent 70%);
+}
+.trust-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; }
+.avatar-ring { border: 1px solid var(--border); }
+.rise { animation: fadeUp .5s ease both; }
+.rise-1 { animation-delay: .05s; } .rise-2 { animation-delay: .12s; }
+.rise-3 { animation-delay: .19s; } .rise-4 { animation-delay: .26s; }

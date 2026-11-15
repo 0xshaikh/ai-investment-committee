@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaqAccordion } from '@/components/FaqAccordion';
+import HeroStatement from '@/components/HeroStatement';
 
 const FEATURES = [
   { icon: '🎯', title: 'Adversarial questioning', desc: 'One difficult question at a time. Every vague answer gets challenged with a specific follow-up. No automatic praise.' },
@@ -63,22 +64,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="grid-lines border-b subtle-border">
-        <div className="max-w-6xl mx-auto px-5 py-24 md:py-32 text-center fade-up">
-          <div className="inline-flex items-center gap-2 badge mb-6 accent border-emerald-500/30 bg-emerald-500/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot" /> AI Investment Committee
-          </div>
-          <h1 className="h-display max-w-3xl mx-auto">Prepare for the investor who will <span className="text-emerald-400">challenge every assumption</span>.</h1>
-          <p className="mt-6 text-lg muted max-w-2xl mx-auto">
-            VCroom runs a simulated investment committee — a VC Partner, a CFO, a CTO and an Industry Specialist — that pressure-tests your startup pitch with difficult, evidence-driven questions before you face real investors.
-          </p>
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <Link href="/signup" className="btn btn-primary text-base px-6 py-3">Start your first meeting</Link>
-            <Link href="#how" className="btn btn-outline text-base px-6 py-3">See how it works</Link>
-          </div>
-          <p className="mt-4 text-xs muted">Free to start · No credit card · Simulated assessment, not an investment offer</p>
-        </div>
-      </section>
+      <HeroStatement />
 
       <section id="how" className="border-b subtle-border">
         <div className="max-w-6xl mx-auto px-5 py-20">
