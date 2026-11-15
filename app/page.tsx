@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaqAccordion } from '@/components/FaqAccordion';
-import HeroStatement from '@/components/HeroStatement';
+import OrvanteLanding from '@/components/OrvanteLanding';
 
 const FEATURES = [
   { icon: '🎯', title: 'Adversarial questioning', desc: 'One difficult question at a time. Every vague answer gets challenged with a specific follow-up. No automatic praise.' },
@@ -44,27 +44,7 @@ const FAQS = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-40 backdrop-blur border-b subtle-border bg-[#0a0a0b]/80">
-        <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
-            <span className="w-7 h-7 rounded-lg bg-emerald-500 grid place-items-center text-black text-sm font-black">V</span>
-            VCroom<span className="accent">.app</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-6 text-sm muted">
-            <Link href="#how" className="hover:text-white transition">How it works</Link>
-            <Link href="#committee" className="hover:text-white transition">The committee</Link>
-            <Link href="#features" className="hover:text-white transition">Features</Link>
-            <Link href="#pricing" className="hover:text-white transition">Pricing</Link>
-            <Link href="/disclaimer" className="hover:text-white transition">Disclaimer</Link>
-          </nav>
-          <div className="flex items-center gap-3">
-            <Link href="/login" className="btn btn-ghost text-sm">Log in</Link>
-            <Link href="/signup" className="btn btn-primary text-sm">Start free</Link>
-          </div>
-        </div>
-      </header>
-
-      <HeroStatement />
+      <OrvanteLanding />
 
       <section id="how" className="border-b subtle-border">
         <div className="max-w-6xl mx-auto px-5 py-20">
