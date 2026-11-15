@@ -1,21 +1,25 @@
 import Link from 'next/link';
 import { FaqAccordion } from '@/components/FaqAccordion';
-import OrvanteLanding from '@/components/OrvanteLanding';
+import KindredHero from '@/components/KindredHero';
+import {
+  IconCrossExam, IconPersonas, IconLedger, IconSearch, IconScale, IconReport,
+  IconChartUp, IconBriefcase, IconChip, IconFactory,
+} from '@/components/icons';
 
 const FEATURES = [
-  { icon: '🎯', title: 'Adversarial questioning', desc: 'One difficult question at a time. Every vague answer gets challenged with a specific follow-up. No automatic praise.' },
-  { icon: '🧠', title: 'Four investor personas', desc: 'A VC Partner, a CFO, a CTO and an Industry Specialist — each with a different thesis, risk tolerance and rejection criteria.' },
-  { icon: '📋', title: 'Evidence ledger', desc: 'Every claim is classified: externally verified, founder-reported, document-supported, modelled, unverified, unknown or contradicted.' },
-  { icon: '🔍', title: 'Market intelligence', desc: 'Claims are checked against external sources with URLs and dates. Unverifiable claims are labeled, never assumed.' },
-  { icon: '⚖️', title: 'Committee decision', desc: 'YES, NO / PASS, CONDITIONAL YES or MORE DILIGENCE — based on evidence, not a universal score. Personas are allowed to disagree.' },
-  { icon: '📄', title: '16-section report', desc: 'A professional evaluation report with a risk register, evidence ledger, investor verdicts and conditions for reconsideration.' },
+  { icon: <IconCrossExam />, title: 'Adversarial questioning', desc: 'One difficult question at a time. Every vague answer gets challenged with a specific follow-up. No automatic praise.' },
+  { icon: <IconPersonas />, title: 'Four investor personas', desc: 'A VC Partner, a CFO, a CTO and an Industry Specialist — each with a different thesis, risk tolerance and rejection criteria.' },
+  { icon: <IconLedger />, title: 'Evidence ledger', desc: 'Every claim is classified: externally verified, founder-reported, document-supported, modelled, unverified, unknown or contradicted.' },
+  { icon: <IconSearch />, title: 'Market intelligence', desc: 'Claims are checked against external sources with URLs and dates. Unverifiable claims are labeled, never assumed.' },
+  { icon: <IconScale />, title: 'Committee decision', desc: 'YES, NO / PASS, CONDITIONAL YES or MORE DILIGENCE — based on evidence, not a universal score. Personas are allowed to disagree.' },
+  { icon: <IconReport />, title: '16-section report', desc: 'A professional evaluation report with a risk register, evidence ledger, investor verdicts and conditions for reconsideration.' },
 ];
 
 const PERSONAS = [
-  { name: 'Venture Capital Partner', focus: 'Venture-scale opportunity, TAM/SAM/SOM, growth, moat, exit', icon: '📈' },
-  { name: 'Financial Investor / CFO', focus: 'Revenue quality, margins, CAC/LTV, burn, runway, valuation', icon: '💼' },
-  { name: 'Technical Investor / CTO', focus: 'Architecture, tech moat, scalability, security, dependencies', icon: '🛠️' },
-  { name: 'Industry Specialist', focus: 'Real problem, alternatives, willingness to pay, regulation', icon: '🏭' },
+  { icon: <IconChartUp />, name: 'Venture Capital Partner', focus: 'Venture-scale opportunity, TAM/SAM/SOM, growth, moat, exit' },
+  { icon: <IconBriefcase />, name: 'Financial Investor / CFO', focus: 'Revenue quality, margins, CAC/LTV, burn, runway, valuation' },
+  { icon: <IconChip />, name: 'Technical Investor / CTO', focus: 'Architecture, tech moat, scalability, security, dependencies' },
+  { icon: <IconFactory />, name: 'Industry Specialist', focus: 'Real problem, alternatives, willingness to pay, regulation' },
 ];
 
 const STEPS = [
@@ -43,8 +47,8 @@ const FAQS = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <OrvanteLanding />
+    <div id="top" className="kc-light min-h-screen">
+      <KindredHero />
 
       <section id="how" className="border-b subtle-border">
         <div className="max-w-6xl mx-auto px-5 py-20">
@@ -55,7 +59,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-4">
             {STEPS.map((s) => (
               <div key={s.n} className="card card-hover p-6">
-                <div className="text-emerald-400 font-mono text-sm mb-3">{s.n}</div>
+                <div className="accent font-mono text-sm mb-3">{s.n}</div>
                 <div className="font-semibold mb-1.5">{s.title}</div>
                 <div className="text-sm muted">{s.desc}</div>
               </div>
@@ -74,7 +78,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {PERSONAS.map((p) => (
               <div key={p.name} className="card card-hover p-6">
-                <div className="text-3xl mb-3">{p.icon}</div>
+                <div className="mb-3 accent">{p.icon}</div>
                 <div className="font-semibold mb-1">{p.name}</div>
                 <div className="text-sm muted">{p.focus}</div>
               </div>
@@ -93,7 +97,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {FEATURES.map((f) => (
               <div key={f.title} className="card card-hover p-6">
-                <div className="text-2xl mb-3">{f.icon}</div>
+                <div className="mb-3 accent">{f.icon}</div>
                 <div className="font-semibold mb-1.5">{f.title}</div>
                 <div className="text-sm muted">{f.desc}</div>
               </div>
@@ -111,23 +115,23 @@ export default function Home() {
               <p className="muted mb-6">A 16-section professional report: executive summary, market and competitor assessment, customer validation, product and technology review, financial and founder assessment, a risk register, the evidence ledger, investor-by-investor verdicts, the committee decision and conditions for reconsideration.</p>
               <ul className="space-y-2 text-sm">
                 {['Individual investor verdicts (they can disagree)', 'A single committee decision: YES / NO / CONDITIONAL YES / MORE DILIGENCE', 'Every claim classified by how it is supported', 'Critical unanswered questions and next steps', 'Downloadable as PDF'].map((x) => (
-                  <li key={x} className="flex gap-2"><span className="text-emerald-400">✓</span><span>{x}</span></li>
+                  <li key={x} className="flex gap-2"><span className="accent">✓</span><span>{x}</span></li>
                 ))}
               </ul>
             </div>
             <div className="card p-6 font-mono text-xs leading-relaxed">
-              <div className="text-emerald-400 mb-3">// evaluation_report.md</div>
+              <div className="accent mb-3">// evaluation_report.md</div>
               <div className="muted"># Investment Evaluation Report</div>
-              <div className="muted">Committee decision: <span className="text-amber-400">CONDITIONAL YES</span></div>
+              <div className="muted">Committee decision: <span className="text-amber-600">CONDITIONAL YES</span></div>
               <div className="mt-3">## 11. Evidence ledger</div>
-              <div className="muted">- "We have 100 customers" — <span className="text-rose-400">contradicted</span></div>
-              <div className="muted">- "12 paying customers, MRR $4.2k" — <span className="text-emerald-400">founder-reported</span></div>
-              <div className="muted">- "TAM $50B" — <span className="text-amber-400">unverified</span></div>
+              <div className="muted">- &quot;We have 100 customers&quot; — <span className="text-rose-600">contradicted</span></div>
+              <div className="muted">- &quot;12 paying customers, MRR $4.2k&quot; — <span className="text-emerald-600">founder-reported</span></div>
+              <div className="muted">- &quot;TAM $50B&quot; — <span className="text-amber-600">unverified</span></div>
               <div className="mt-3">## 12. Investor verdicts</div>
-              <div className="muted">- VC Partner: <span className="text-amber-400">CONDITIONAL YES</span></div>
-              <div className="muted">- CFO: <span className="text-rose-400">PASS</span></div>
-              <div className="muted">- CTO: <span className="text-indigo-400">MORE DILIGENCE</span></div>
-              <div className="muted">- Industry Specialist: <span className="text-amber-400">CONDITIONAL YES</span></div>
+              <div className="muted">- VC Partner: <span className="text-amber-600">CONDITIONAL YES</span></div>
+              <div className="muted">- CFO: <span className="text-rose-600">PASS</span></div>
+              <div className="muted">- CTO: <span className="text-indigo-600">MORE DILIGENCE</span></div>
+              <div className="muted">- Industry Specialist: <span className="text-amber-600">CONDITIONAL YES</span></div>
             </div>
           </div>
         </div>
@@ -142,12 +146,12 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {PLANS.map((p) => (
-              <div key={p.name} className={`card p-6 relative ${p.popular ? 'border-emerald-500/50' : ''}`}>
-                {p.popular && <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 badge bg-emerald-500 text-black border-0">Popular</div>}
+              <div key={p.name} className={`card p-6 relative ${p.popular ? 'border-emerald-600/50' : ''}`}>
+                {p.popular && <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 badge bg-emerald-600 text-white border-0">Popular</div>}
                 <div className="font-semibold mb-1">{p.name}</div>
                 <div className="text-2xl font-bold mb-1">{p.price}<span className="text-sm muted font-normal">{p.period}</span></div>
                 <ul className="text-sm muted space-y-1.5 my-4">
-                  {p.feats.map((f) => <li key={f} className="flex gap-2"><span className="text-emerald-400">✓</span>{f}</li>)}
+                  {p.feats.map((f) => <li key={f} className="flex gap-2"><span className="accent">✓</span>{f}</li>)}
                 </ul>
                 <Link href="/signup" className={`btn w-full ${p.popular ? 'btn-primary' : 'btn-outline'}`}>{p.cta}</Link>
               </div>
@@ -184,24 +188,24 @@ export default function Home() {
           <div>
             <div className="font-semibold mb-2 text-xs uppercase tracking-wider muted">Product</div>
             <ul className="space-y-1.5 muted">
-              <li><Link href="/login" className="hover:text-white">Log in</Link></li>
-              <li><Link href="/signup" className="hover:text-white">Sign up</Link></li>
-              <li><Link href="#pricing" className="hover:text-white">Pricing</Link></li>
+              <li><Link href="/login" className="hover:opacity-70">Log in</Link></li>
+              <li><Link href="/signup" className="hover:opacity-70">Sign up</Link></li>
+              <li><Link href="#pricing" className="hover:opacity-70">Pricing</Link></li>
             </ul>
           </div>
           <div>
             <div className="font-semibold mb-2 text-xs uppercase tracking-wider muted">Legal</div>
             <ul className="space-y-1.5 muted">
-              <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
-              <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
-              <li><Link href="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
+              <li><Link href="/terms" className="hover:opacity-70">Terms of Service</Link></li>
+              <li><Link href="/privacy" className="hover:opacity-70">Privacy Policy</Link></li>
+              <li><Link href="/disclaimer" className="hover:opacity-70">Disclaimer</Link></li>
             </ul>
           </div>
           <div>
             <div className="font-semibold mb-2 text-xs uppercase tracking-wider muted">Company</div>
             <ul className="space-y-1.5 muted">
-              <li><Link href="/about" className="hover:text-white">About</Link></li>
-              <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
+              <li><Link href="/about" className="hover:opacity-70">About</Link></li>
+              <li><Link href="/contact" className="hover:opacity-70">Contact</Link></li>
             </ul>
           </div>
         </div>

@@ -114,3 +114,59 @@ body { background: var(--bg); color: var(--text); font-family: ui-sans-serif, sy
   .orv-rise, .orv-title-line > span, .orv-photo-enter, .orv-nav-enter, .orv-avatar-pop { animation: none !important; }
   .orv-word { color: #f4f4f4 !important; }
 }
+
+/* ---- Kindred dot-matrix hands theme (light, adapted — colors shifted, not an exact copy) ---- */
+
+/* Scoped light theme for the landing only (app pages stay dark). */
+.kc-light { background: #f6f3ee; color: #171310; font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; }
+.kc-light .card { background: #ffffff; border-color: #e7e2d8; }
+.kc-light .card-hover:hover { border-color: #cfc8bb; }
+.kc-light .eyebrow { color: #1e6f52; }
+.kc-light .muted { color: #6b665e; }
+.kc-light .subtle-border { border-color: #e7e2d8; }
+.kc-light .badge { border-color: #e7e2d8; }
+.kc-light .accent { color: #1e6f52; }
+.kc-light .btn-primary { background: #1e6f52; color: #fff; }
+.kc-light .btn-primary:hover { background: #268a66; }
+.kc-light .btn-outline { border-color: #d8d2c6; color: #171310; }
+.kc-light .btn-outline:hover { border-color: #b9b2a6; background: #f1eee7; }
+.kc-light .btn:focus-visible { outline: 2px solid #1e6f52; outline-offset: 2px; }
+.kc-light .input { background: #ffffff; border-color: #e7e2d8; color: #171310; }
+.kc-light .input:focus { border-color: #1e6f52; }
+
+/* Hero */
+.kc-hero { position: relative; height: 100vh; min-height: 660px; overflow: hidden; }
+.kc-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.kc-nav { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; gap: clamp(18px, 2.6vw, 40px); padding-top: 36px; font-size: 13.5px; }
+.kc-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; margin-right: 10px; color: #171310; text-decoration: none; }
+.kc-links { display: flex; gap: clamp(18px, 2.6vw, 40px); }
+.kc-links a { color: #4a453f; text-decoration: none; transition: color .2s; }
+.kc-links a:hover { color: #171310; }
+.kc-signin { background: #171310; color: #fff; padding: 10px 21px; border-radius: 999px; font-weight: 500; margin-left: 10px; text-decoration: none; transition: transform .25s; display: inline-block; }
+.kc-signin:hover { transform: translateY(-1px); }
+
+.kc-copy { position: absolute; z-index: 3; left: 50%; top: 24.5%; transform: translateX(-50%); text-align: center; width: min(92vw, 720px); }
+.kc-h1 { font-weight: 500; letter-spacing: -.035em; line-height: 1.04; font-size: clamp(38px, 3.75vw, 68px); margin: 0; }
+.kc-line1 { display: block; color: #9a948a; }
+.kc-line2 { display: block; color: #171310; }
+.kc-sub { margin: 20px auto 0; max-width: 340px; color: #6b665e; font-size: clamp(13px, 1.02vw, 15.5px); line-height: 1.4; }
+
+.kc-cta { display: inline-block; position: relative; margin-top: clamp(34px, 3.6vw, 52px); }
+.kc-cta::before { content: ""; position: absolute; left: 10%; right: 10%; bottom: -6px; height: 16px; border-radius: 50%; background: linear-gradient(90deg, #ffd76a, #7fffb0, #5adfff, #a58bff, #ff7fe0, #ffc07b); filter: blur(9px); opacity: .85; transition: opacity .3s, filter .3s, bottom .3s; }
+.kc-cta-pill { position: relative; z-index: 1; display: inline-block; background: #171310; color: #fff; font-size: 13.5px; font-weight: 500; padding: 11px 20px; border-radius: 999px; text-decoration: none; transition: transform .3s; }
+.kc-cta:hover::before { opacity: 1; filter: blur(12px); bottom: -9px; }
+.kc-cta:hover .kc-cta-pill { transform: translateY(-1px); }
+
+.kc-personas { position: absolute; z-index: 3; bottom: clamp(28px, 6vh, 64px); left: 0; right: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: clamp(26px, 4.6vw, 66px); padding: 0 16px; }
+.kc-persona { display: inline-flex; align-items: center; gap: 7px; color: #8a837a; font-size: clamp(14px, 1.18vw, 17px); font-weight: 500; letter-spacing: -.01em; }
+
+.kc-brand:focus-visible, .kc-links a:focus-visible, .kc-signin:focus-visible, .kc-cta-pill:focus-visible { outline: 2px solid #1e6f52; outline-offset: 3px; border-radius: 4px; }
+
+@media (max-width: 760px) {
+  .kc-links { display: none; }
+  .kc-nav { justify-content: space-between; padding: 22px 18px 0; }
+  .kc-copy { top: 20%; }
+  .kc-personas { gap: 14px 24px; }
+  .kc-persona { font-size: 13px; }
+}
