@@ -16,6 +16,23 @@ import { SEED_PERSONAS, SEED_PLANS } from './seed-data';
 const DATA_DIR = join(process.cwd(), '.localdata');
 const DB_FILE = join(DATA_DIR, 'db.json');
 
+// On read-only / serverless filesystems (e.g. Vercel) the file-backed store can't persist,
+// so fall back to an in-memory store. The demo still runs end-to-end; data resets on cold start.
+let memDB: DB | null = null;
+let fileWritable: boolean | null = null;
+
+function canWriteFile(): boolean {
+  if (fileWritable !== null) return fileWritable;
+  try {
+    mkdirSync(DATA_DIR, { recursive: true });
+    writeFileSync(join(DATA_DIR, '.probe'), 'ok');
+    fileWritable = true;
+  } catch {
+    fileWritable = false;
+  }
+  return fileWritable;
+}
+
 interface LocalUser { id: string; email: string; full_name?: string; role: 'founder'|'admin'; salt: string; password_hash: string; }
 interface DB {
   users: LocalUser[]; tokens: Record<string, string>; profiles: Profile[];
@@ -33,12 +50,19 @@ function emptyDB(): DB {
 }
 
 function load(): DB {
+  if (memDB) return memDB;
+  if (!canWriteFile()) return emptyDB();
   if (!existsSync(DB_FILE)) return emptyDB();
   try { return JSON.parse(readFileSync(DB_FILE, 'utf8')); } catch { return emptyDB(); }
 }
 function save(db: DB) {
-  mkdirSync(DATA_DIR, { recursive: true });
-  writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+  if (!canWriteFile()) { memDB = db; return; }
+  try {
+    mkdirSync(DATA_DIR, { recursive: true });
+    writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+  } catch {
+    memDB = db;
+  }
 }
 function hash(pw: string, salt: string) { return createHash('sha256').update(salt + pw).digest('hex'); }
 const now = () => new Date().toISOString();
