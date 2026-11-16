@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VCroom — AI Investment Committee</title>
+<meta name="description" content="VCroom: a real AI investment committee. Four investor personas question your pitch, weigh the evidence, and deliver a defensible decision.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f6f3ee;--ink:#171310;--mute:#9a938a;--sub:#6b665e;--accent:#1e6f52}
+html,body{height:100%;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.hero{position:relative;height:100vh;min-height:660px;overflow:hidden;background:var(--bg)}
+#dots{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero>*{position:relative;z-index:3}
+/* Nav */
+nav{display:flex;align-items:center;justify-content:center;gap:clamp(18px,2.6vw,40px);padding-top:36px;font-size:13.5px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;letter-spacing:-.01em;margin-right:10px;color:var(--ink);text-decoration:none}
+.brand svg{display:block}
+.links{display:flex;align-items:center;gap:clamp(18px,2.2vw,34px)}
+.links a{color:#3a3a3a;text-decoration:none;transition:color .2s}
+.links a:hover{color:#000}
+.signin{background:var(--ink);color:#fff;padding:10px 21px;border-radius:999px;font-weight:500;margin-left:10px;text-decoration:none;transition:transform .25s;display:inline-block}
+.signin:hover{transform:translateY(-1px)}
+/* Copy */
+.copy{position:absolute;left:50%;top:24.5%;transform:translateX(-50%);text-align:center;width:min(92vw,720px)}
+.copy h1{font-weight:500;letter-spacing:-.035em;line-height:1.04;font-size:clamp(38px,3.75vw,68px)}
+.line1{display:block;color:var(--mute)}
+.line2{display:block;color:var(--ink)}
+.sub{margin:20px auto 0;max-width:340px;color:var(--sub);font-size:clamp(13px,1.02vw,15.5px);line-height:1.4}
+.cta{display:inline-block;position:relative;margin-top:clamp(34px,3.6vw,52px);text-decoration:none}
+.cta .pill{display:inline-block;background:var(--ink);color:#fff;font-size:13.5px;font-weight:500;padding:11px 20px;border-radius:999px;position:relative;z-index:1;transition:transform .3s}
+.cta:hover .pill{transform:translateY(-1px)}
+.cta::before{content:"";position:absolute;left:10%;right:10%;bottom:-6px;height:16px;border-radius:50%;background:linear-gradient(90deg,#ffcf5a,#7dffa8,#5ad7ff,#9b7bff,#ff6fd8,#ffb36b);filter:blur(9px);opacity:.85;transition:opacity .3s,filter .3s,bottom .3s;z-index:0}
+.cta:hover::before{opacity:1;filter:blur(12px);bottom:-9px}
+/* Persona row (real roles, no fake brands) */
+.personas{position:absolute;bottom:clamp(28px,6vh,64px);width:100%;display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(26px,4.6vw,66px);padding:0 16px;color:#8d8d8d;font-size:clamp(14px,1.18vw,17px);font-weight:500;letter-spacing:-.01em}
+.persona{display:flex;align-items:center;gap:7px}
+.persona svg{display:block}
+@media(max-width:760px){
+  .links{display:none}
+  nav{justify-content:space-between;padding:22px 18px 0;flex-wrap:nowrap}
+  .copy{top:20%}
+  .personas{gap:14px 24px;font-size:13px;bottom:clamp(18px,4vh,40px)}
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <canvas id="dots"></canvas>
+  <nav>
+    <a class="brand" href="#">
+      <svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M2 0h4v18H2zM7 9c3-1 5-4 6-9h3c-1 5-3 8-6 9 3 1 5 4 6 9h-3c-1-5-3-8-6-9z" fill="#171310"/></svg>
+      VCroom
+    </a>
+    <div class="links">
+      <a href="#platform">Platform</a>
+      <a href="#product">Product</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#docs">Docs</a>
+      <a href="#company">Company</a>
+    </div>
+    <a class="signin" href="#signin">Sign in</a>
+  </nav>
+  <div class="copy">
+    <h1><span class="line1">Four investors.</span><span class="line2">One verdict.</span></h1>
+    <p class="sub">Upload your pitch. Four personas ask one difficult question at a time, weigh the evidence, and deliver a defensible decision.</p>
+    <a class="cta" href="#signin"><span class="pill">Start free</span></a>
+  </div>
+  <div class="personas">
+    <span class="persona"><svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a4 4 0 110 8 4 4 0 010-8zm-6 14c0-3 3-5 6-5s6 2 6 5v1H4v-1z"/></svg>Venture Partner</span>
+    <span class="persona"><svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3h12v4H4zm2 6h2v2H6zm4 0h2v2h-2zm-4 4h2v2H6zm4 0h2v2h-2zm4-4h2v2h-2z"/></svg>CFO</span>
+    <span class="persona"><svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor"><path d="M6 4l8 6-8 6z"/></svg>CTO</span>
+    <span class="persona"><svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l7 4v10l-7 4-7-4V5zm0 2.2L5 6.3v7.4l5 2.9 5-2.9V6.3z"/></svg>Industry Specialist</span>
+  </div>
+</section>
+
+<script>
+// VCroom — dot-matrix hands hero (adapted for VCroom, not an exact copy of the reference)
+(function(){
+  var SHEET='https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261030_025250_100df7b8-31fd-4614-aa4a-c1b7d5b6b273.png&w=1600&q=85';
+  var SLICES={LA:[0,.06,.47,.40],RA:[.53,.06,.47,.40],LB:[0,.55,.47,.40],RB:[.53,.55,.47,.40]};
+  var LEVELS=[0,.26,.52,.78,1],LOOP=20,DOT='#0d0d0d';
+  var canvas=document.getElementById('dots'),ctx=canvas.getContext('2d');
+  var W=0,H=0,DPR=1,step=0,rowStep=0,cols=0,rows=0,R=0;
+  var fA=document.createElement('canvas'),fB=document.createElement('canvas');
+  var cA=fA.getContext('2d',{willReadFrequently:true}),cB=fB.getContext('2d',{willReadFrequently:true});
+  var tiles={},sheetReady=false;
+  function hash(a,b){var s=Math.sin(a*127.1+b*311.7)*43758.5453;return s-Math.floor(s);}
+  function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
+  function smooth(a,b,x){var t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);}
+  function mixAt(t,on,off,dur){return smooth(on,on+dur,t)*(1-smooth(off,off+dur,t));}
+  function loadSheet(){
+    var img=new Image();img.crossOrigin='anonymous';
+    img.onload=function(){
+      var sw=img.width,sh=img.height;
+      for(var k in SLICES){
+        var s=SLICES[k],tw=420,th=Math.round(sw*s[3]*(tw/(sw*s[2])));
+        var t=document.createElement('canvas');t.width=tw;t.height=th;
+        var g=t.getContext('2d');g.imageSmoothingQuality='high';
+        g.drawImage(img,s[0]*sw,s[1]*sh,s[2]*sw,s[3]*sh,0,0,tw,th);
+        tiles[k]=t;
+      }
+      sheetReady=true;render(performance.now()/1000);
+    };
+    img.src=SHEET;
+  }
+  function resize(){
+    var rect=canvas.getBoundingClientRect();
+    DPR=Math.min(2,window.devicePixelRatio||1);
+    W=rect.width;H=rect.height;
+    canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);
+    step=Math.max(5,W/205);rowStep=step*2.05;
+    cols=Math.ceil(W/step);rows=Math.ceil(H/rowStep);R=step*.46;
+    fA.width=cols;fA.height=rows;fB.width=cols;fB.height=rows;
+    render(performance.now()/1000);
+  }
+  function drawPose(ctx,fieldTiles,t){
+    ctx.save();ctx.setTransform(1,0,0,1,0,0);
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,cols,rows);
+    ctx.setTransform(cols/W,0,0,rows/H,0,0);
+    var portrait=H>W;
+    var hw=W*(portrait?.66:.53);
+    var hh=hw*((.40*1520)/(.47*2688));
+    var cy=H*(portrait?.66:.54);
+    var a=2*Math.PI*t/LOOP;
+    var phases=[0,Math.PI];
+    for(var side=0;side<2;side++){
+      var ph=phases[side];
+      var reach=(.035*Math.sin(a+ph)+.012*Math.sin(2*a+1.3+ph))*W;
+      var scale=1+.07*Math.sin(a+.9+ph);
+      var rot=(side===0?1:-1)*.045*Math.sin(a+2.1+ph);
+      var x=side===0?reach-W*.045:W-hw+W*.045-reach;
+      ctx.save();
+      ctx.translate(side===0?0:W,cy);ctx.rotate(rot);ctx.scale(scale,scale);
+      ctx.translate(side===0?0:-W,0);
+      ctx.drawImage(fieldTiles[side],x,cy-hh/2,hw,hh);
+      ctx.restore();
+    }
+    ctx.restore();
+  }
+  function render(t){
+    t=t%LOOP;
+    var dataA=dataB=null;
+    if(sheetReady){
+      ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawPose(cA,[tiles.LA,tiles.RA],t);drawPose(cB,[tiles.LB,tiles.RB],t);
+      dataA=cA.getImageData(0,0,cols,rows).data;
+      dataB=cB.getImageData(0,0,cols,rows).data;
+    }
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    ctx.fillStyle=DOT;
+    var mL=mixAt(t,6.2,14.6,1.6),mR=mixAt(t,2.4,10.4,1.6);
+    var tick=Math.floor(t*7);
+    var portrait=H>W;
+    var czW=portrait?.44:.2, czY=portrait?.33:.385, czR=portrait?.85:.085;
+    for(var j=0;j<rows;j++){
+      var shift=hash(j,tick)>.965?Math.round((hash(tick,j)-.5)*8):0;
+      for(var i=0;i<cols;i++){
+        var si=clamp(i-shift,0,cols-1);
+        var half=i<cols/2;
+        var m=half?mL:mR;
+        var seed=.55*hash(i,j)+.45*hash(j*3.1,7.7);
+        var useB=seed<m;
+        var lum=255;
+        if(dataA){
+          var idx=(j*cols+si)*4;
+          lum=useB?dataB[idx]:dataA[idx];
+        }
+        var v=clamp((1-lum/255-.16)/.42,0,1);
+        if(v<=0)continue;
+        v*=.86+.14*Math.sin(t*3.2+seed*40);
+        var cx=Math.abs((i+.5)/cols-.5);
+        v*=smooth(.035,.11,cx);
+        var ex=cx/czW,ey=((j+.5)*rowStep/H-czY)/czR;
+        v*=smooth(.85,1.25,Math.hypot(ex,ey));
+        if(useB&&m>.001&&m<.999){
+          var d=Math.abs(seed-m);
+          if(d<.12){v*=d/.12;if(hash(i+tick,j)<=.4)v*=.3;}
+        }
+        var level=0;
+        for(var L=1;L<LEVELS.length;L++){if(v>=LEVELS[L]-.13)level=LEVELS[L];}
+        if(level===0)continue;
+        var rad=R*level*(level===LEVELS[1]?.38:1);
+        var px=(i+.5)*step,py=(j+.5)*rowStep;
+        ctx.beginPath();ctx.arc(px,py,rad,0,6.2832);ctx.fill();
+      }
+    }
+  }
+  var t0=performance.now();
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function loop(now){
+    render((now-t0)/1000);
+    if(!reduced)requestAnimationFrame(loop);
+  }
+  window.__render=function(t){render(t);};
+  window.addEventListener('resize',resize);
+  loadSheet();resize();
+  if(reduced){render(0);}else{requestAnimationFrame(loop);}
+})();
+</script>
+</body>
+</html>
